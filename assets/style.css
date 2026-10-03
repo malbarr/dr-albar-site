@@ -135,6 +135,8 @@ p.sec-sub { color: var(--ink-soft); margin: 0 0 28px; max-width: 60ch; }
 
 /* ---------- cards ---------- */
 
+.grid.four { grid-template-columns: repeat(auto-fit, minmax(228px, 1fr)); }
+
 .grid {
   display: grid;
   gap: 18px;
