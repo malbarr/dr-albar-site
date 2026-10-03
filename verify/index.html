@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>التحقق من شهادة — د. محمد البار</title>
+<meta name="description" content="تحقّق من صحة شهادة صادرة من دورات ORL101 أو FESS101 برقم الشهادة.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+
+<header class="site">
+  <div class="nav">
+    <a class="brand" href="/">د. محمد <span>البار</span></a>
+    <nav>
+      <a href="/orl101/">ORL101</a>
+      <a href="/fess101/">FESS101</a>
+      <a href="/verify/" aria-current="page">التحقق</a>
+    </nav>
+  </div>
+</header>
+
+<main class="page">
+  <div class="wrap">
+    <h1>التحقق من شهادة</h1>
+    <p class="lede">أدخل رقم الشهادة الظاهر عليها للتأكد من صحتها وسريانها. التحقق متاح لأي جهة بلا تسجيل دخول.</p>
+
+    <div class="interest" style="max-width:520px">
+      <label for="cid">رقم الشهادة</label>
+      <input id="cid" type="text" dir="ltr" placeholder="FESS101-0042" autocomplete="off">
+      <button class="btn" id="go" type="button">تحقّق</button>
+      <div class="form-msg" id="out" role="status" aria-live="polite"></div>
+    </div>
+
+    <div class="note">
+      <strong>ملاحظة:</strong> نظام الشهادات لم يُفعَّل بعد — لم تصدر أي شهادة حتى الآن، فأي رقم تُدخله الآن سيظهر «غير موجود».
+    </div>
+  </div>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="disclaimer">
+      © <span id="yr">2026</span> د. محمد البار.
+    </div>
+  </div>
+</footer>
+
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+document.getElementById('go').addEventListener('click', function () {
+  var id = document.getElementById('cid').value.trim();
+  var out = document.getElementById('out');
+  if (!id) { out.textContent = 'أدخل رقم الشهادة.'; out.style.color = '#b3261e'; return; }
+  out.textContent = 'جارٍ التحقق…'; out.style.color = '';
+  fetch('/api/verify?id=' + encodeURIComponent(id))
+    .then(function (r) { return r.ok ? r.json() : Promise.reject(r.status); })
+    .then(function (d) {
+      if (!d.found) { out.textContent = 'لا توجد شهادة بهذا الرقم.'; out.style.color = '#b3261e'; return; }
+      out.style.color = '#0d6e6e';
+      out.textContent = 'شهادة صحيحة — ' + d.course + ' · ' + d.name +
+        ' · صدرت ' + d.issued + ' · تنتهي ' + d.expires + (d.valid ? '' : ' (منتهية)');
+    })
+    .catch(function () { out.textContent = 'نظام التحقق غير مفعّل بعد.'; out.style.color = '#b3261e'; });
+});
+</script>
+</body>
+</html>

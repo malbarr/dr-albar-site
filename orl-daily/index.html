@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ORL-Bar Daily — ملخص أبحاث الأنف والأذن والحنجرة | د. محمد البار</title>
+<meta name="description" content="ملخص يومي لأحدث الأبحاث المنشورة في الأنف والأذن والحنجرة، مختارة ومُلخَّصة بالعربية.">
+<link rel="canonical" href="https://dr-albar.com/orl-daily/">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+
+<header class="site">
+  <div class="nav">
+    <a class="brand" href="/">د. محمد <span>البار</span></a>
+    <nav>
+      <a href="/patients/">للمرضى</a>
+      <a href="/orl101/">ORL101</a>
+      <a href="/fess101/">FESS101</a>
+      <a href="/orl-daily/" aria-current="page">ملخص الأبحاث</a>
+      <a href="/about/">نبذة</a>
+    </nav>
+  </div>
+</header>
+
+<main class="page">
+  <div class="wrap">
+    <h1>ORL‑Bar Daily</h1>
+    <p class="lede">ملخص يومي لأحدث ما يُنشر في الأنف والأذن والحنجرة: اختيار من قواعد البيانات العلمية، ثم تلخيص موجز بالعربية مع رابط البحث الأصلي.</p>
+
+    <div id="list" class="grid"></div>
+
+    <p id="empty" class="note" hidden>
+      <strong>أول عدد لم يُنشر بعد.</strong> يُحدَّث هذا القسم آلياً كل صباح بتوقيت الرياض بمجرد تشغيل النشر التلقائي.
+    </p>
+
+    <h2>عن هذا القسم</h2>
+    <p class="muted">الملخصات اجتهاد تحريري موجز لتسهيل المتابعة، وليست بديلاً عن قراءة البحث الأصلي. المرجع دائماً هو النص المنشور في مجلته.</p>
+  </div>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="disclaimer">
+      محتوى علمي موجّه للمختصين، وليس إرشاداً علاجياً.<br>
+      © <span id="yr">2026</span> د. محمد البار.
+    </div>
+  </div>
+</footer>
+
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+fetch('/orl-daily/issues.json', { cache: 'no-cache' })
+  .then(function (r) { return r.ok ? r.json() : []; })
+  .then(function (items) {
+    if (!Array.isArray(items) || !items.length) { document.getElementById('empty').hidden = false; return; }
+    var box = document.getElementById('list');
+    items.slice(0, 60).forEach(function (it) {
+      var a = document.createElement('a');
+      a.className = 'card';
+      a.href = it.url;
+      a.innerHTML = '<span class="tag">' + it.date + '</span><h3>' + it.title + '</h3>' +
+                    '<p>' + (it.summary || '') + '</p>';
+      box.appendChild(a);
+    });
+  })
+  .catch(function () { document.getElementById('empty').hidden = false; });
+</script>
+</body>
+</html>
