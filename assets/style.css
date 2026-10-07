@@ -762,13 +762,16 @@ footer.site a:hover { color: #fff; }
    reveal animation
    ========================================================================== */
 
-[data-reveal] {
+/* content is visible by default; only the `js` class (set by an inline
+   script in <head>) opts into the fade-in. A JS failure can never blank
+   the page. */
+html.js [data-reveal] {
   opacity: 0; transform: translateY(22px);
   transition: opacity .65s var(--ease), transform .65s var(--ease);
 }
-[data-reveal].in { opacity: 1; transform: none; }
+html.js [data-reveal].in { opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce) {
-  [data-reveal] { opacity: 1; transform: none; transition: none; }
+  html.js [data-reveal] { opacity: 1; transform: none; transition: none; }
   html { scroll-behavior: auto; }
   .pill .dot { animation: none; }
 }
