@@ -123,13 +123,15 @@ header.site.scrolled {
 }
 .brand:hover { color: var(--ink); }
 .brand .mark {
-  width: 38px; height: 38px; flex: none;
-  display: grid; place-items: center;
-  border-radius: 12px;
-  background: linear-gradient(145deg, var(--brand) 0%, var(--brand-3) 100%);
-  box-shadow: 0 4px 12px rgba(0,157,142,.3);
+  width: 28px; height: 44px; flex: none; display: block;
+  background: url(/assets/calligraphy-sig.jpg) center / contain no-repeat;
+  /* إظهار الخط الأسود بلون العلامة التجارية */
+  filter: saturate(0) contrast(2) brightness(.3) sepia(1) hue-rotate(150deg) saturate(3);
+  transition: transform .25s ease, opacity .2s ease;
+  opacity: .85;
 }
-.brand .mark svg { width: 22px; height: 22px; }
+.brand:hover .mark { transform: translateY(-2px) rotate(-2deg); opacity: 1; }
+
 .brand b { font-weight: 700; color: var(--brand); }
 
 .nav-links {
@@ -267,10 +269,30 @@ header.site.scrolled {
 
 .hero .arcs {
   position: absolute; z-index: 1;
-  inset-inline-end: -120px; top: -100px;
-  width: 560px; height: 560px; opacity: .35;
+  inset-inline-end: -60px; top: 50%; transform: translateY(-50%);
+  width: 600px; height: 600px; opacity: .3;
   pointer-events: none;
 }
+
+/* الختم القديم — مخفي الآن لصالح calligraphy-sig */
+.hero-seal { display: none; }
+
+/* التوقيع الخطّي الحقيقي للدكتور */
+.hero-calligraphy {
+  position: absolute; z-index: 1; pointer-events: none;
+  inset-inline-end: 80px; top: 50%; transform: translateY(-50%);
+  width: 230px; height: auto;
+  filter: invert(1) drop-shadow(0 0 30px rgba(61,217,184,.35));
+  mix-blend-mode: screen;
+  opacity: .75;
+  animation: sigIn 1.4s cubic-bezier(.2,.7,.3,1) both;
+}
+@keyframes sigIn {
+  from { opacity: 0; transform: translateY(-48%) scale(.88) rotate(-4deg); }
+  to   { opacity: .75; transform: translateY(-50%) scale(1) rotate(0); }
+}
+@media (prefers-reduced-motion: reduce) { .hero-calligraphy { animation: none; } }
+@media (max-width: 1100px) { .hero-calligraphy, .hero .arcs { display: none; } }
 
 .hero .wrap { position: relative; z-index: 2; }
 
@@ -721,6 +743,7 @@ footer.site .cols {
 @media (max-width: 480px) { footer.site .cols { grid-template-columns: 1fr; gap: 28px; } }
 
 footer.site .brand { color: #fff; font-size: 1.1rem; }
+footer.site .brand .mark { background: linear-gradient(160deg, #5ee7c8 0%, #e8c257 100%); }
 footer.site .brand b { color: #3dd9b8; }
 footer.site .about { margin: 16px 0 0; max-width: 34ch; font-size: .9rem; line-height: 1.9; color: #6a9298; }
 footer.site h4 { margin: 0 0 14px; font-size: .8rem; font-weight: 800; letter-spacing: .11em; text-transform: uppercase; color: #3dd9b8; }

@@ -4,6 +4,7 @@
   if (!form) return;
   var msg = form.querySelector('.form-msg');
   var btn = form.querySelector('button[type=submit]');
+  var ERR = '#c0455c';
 
   form.addEventListener('submit', function (e) {
     e.preventDefault();
@@ -19,7 +20,7 @@
 
     if (!data.name || !data.email) {
       msg.textContent = 'الرجاء تعبئة الاسم والبريد.';
-      msg.style.color = '#b3261e';
+      msg.style.color = ERR;
       return;
     }
 
@@ -38,10 +39,28 @@
       }
       throw new Error('http ' + r.status);
     }).catch(function () {
+      // the server endpoint is not live yet — fall back to WhatsApp
       btn.disabled = false;
       btn.textContent = 'سجّل اهتمامي';
-      msg.innerHTML = 'تعذّر الإرسال — التسجيل لم يُفعَّل بعد على الخادم. حاول لاحقاً.';
-      msg.style.color = '#b3261e';
+
+      var lines = [
+        'السلام عليكم، أرغب بتسجيل اهتمامي بدورة ' + data.course + '.',
+        'الاسم: ' + data.name,
+        'البريد: ' + data.email,
+        'الصفة: ' + data.role
+      ];
+      var url = 'https://wa.me/966582701349?text=' + encodeURIComponent(lines.join('\n'));
+
+      var a = document.createElement('a');
+      a.href = url;
+      a.target = '_blank';
+      a.rel = 'noopener';
+      a.innerHTML = '<b>سجّل اهتمامك عبر واتساب</b>';
+
+      msg.textContent = 'التسجيل الإلكتروني لم يُفعَّل بعد — ';
+      msg.appendChild(a);
+      msg.appendChild(document.createTextNode(' وسيصلك إشعار عند فتح التسجيل.'));
+      msg.style.color = ERR;
     });
   });
 })();
