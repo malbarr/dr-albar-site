@@ -32,21 +32,6 @@
     });
   }
 
-  /* ---- WhatsApp links: add a pre-filled message ----
-     HTML keeps a bare wa.me href so it still works without JS. */
-  var WA_NUM = '966582701349';
-  var WA_TEXT = {
-    appointment: 'السلام عليكم، أرغب بحجز موعد في عيادة د. محمد البار.\nالاسم:\nالمدينة:\nسبب الزيارة بإيجاز:',
-    ask: 'السلام عليكم، لدي استفسار عن مواعيد عيادة د. محمد البار.\nالاسم:',
-    course: 'السلام عليكم، أرغب بالاستفسار عن دورات ORL101 / FESS101.\nالاسم:\nالصفة (طالب / مقيم / استشاري):'
-  };
-  var waLinks = document.querySelectorAll('a[data-wa]');
-  for (var w = 0; w < waLinks.length; w++) {
-    var kind = waLinks[w].getAttribute('data-wa') || 'appointment';
-    var body = WA_TEXT[kind] || WA_TEXT.appointment;
-    waLinks[w].href = 'https://wa.me/' + WA_NUM + '?text=' + encodeURIComponent(body);
-  }
-
   /* ---- scroll reveal ---- */
   var targets = document.querySelectorAll('[data-reveal]');
   if (!targets.length) return;

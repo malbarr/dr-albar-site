@@ -1,0 +1,13 @@
+name = "dr-albar-contact"
+main = "contact-worker.js"
+compatibility_date = "2026-09-01"
+
+# dr-albar.com must be an active zone on this Cloudflare account
+routes = [
+  { pattern = "dr-albar.com/api/contact*", zone_name = "dr-albar.com" }
+]
+
+# fill in the id printed by:  wrangler kv namespace create CONTACT
+[[kv_namespaces]]
+binding = "CONTACT"
+id = "REPLACE_WITH_KV_NAMESPACE_ID"

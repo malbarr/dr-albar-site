@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>نموذج التواصل — د. محمد البار</title>
+<meta name="description" content="نموذج تواصل تعليمي وأكاديمي مع د. محمد البار. ليس للمواعيد ولا للاستشارات الطبية.">
+<meta name="theme-color" content="#04262b">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/style.css?v=202610081400">
+<script>document.documentElement.className+=" js";setTimeout(function(){document.querySelectorAll("[data-reveal]:not(.in)").forEach(function(e){e.classList.add("in")})},2500);</script>
+</head>
+<body>
+
+<a class="skip" href="#main">تجاوز إلى المحتوى</a>
+
+<header class="site">
+  <div class="nav">
+    <a class="brand" href="/">
+      <span class="mark" aria-hidden="true"></span>
+      <span>د. محمد <b>البار</b></span>
+    </a>
+    <button class="burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="القائمة"><span></span></button>
+    <div class="nav-links" id="menu">
+      <a href="/patients/">للمرضى</a>
+      <a href="/orl101/">ORL101</a>
+      <a href="/fess101/">FESS101</a>
+      <a href="/orl-daily/">ملخص الأبحاث</a>
+      <a href="/#apps">التطبيقات</a>
+      <a href="/about/">نبذة</a>
+      <span class="nav-cta"><a class="btn sm" href="/contact/">تواصل</a></span>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="page">
+
+  <div class="page-head">
+    <div class="wrap">
+      <h1>نموذج التواصل</h1>
+      <p class="lede">
+        اكتب رسالتك هنا وتصل مباشرة. لا يَظهر في هذا الموقع رقم هاتف ولا عنوان،
+        والرسالة تُقرأ من صاحب الموقع وحده.
+      </p>
+    </div>
+  </div>
+
+  <div class="wrap">
+
+    <div class="note" style="margin-top:0">
+      <strong>قبل أن تكتب:</strong> هذا النموذج للأسئلة التعليمية والأكاديمية وللاستفسار عن الدورات.
+      وهو <strong>ليس</strong> قناة لحجز المواعيد، ولا للاستشارات الطبية، ولا للطوارئ.
+      لا تُرسل تقارير ولا صور أشعة ولا نتائج تحاليل ولا أي بيانات صحية شخصية.
+      للحالات الطارئة اتّصل بالطوارئ مباشرة.
+    </div>
+
+    <form class="interest" id="cform" novalidate>
+      <h3>اكتب رسالتك</h3>
+
+      <label for="c-name">الاسم</label>
+      <input id="c-name" name="name_" type="text" autocomplete="name" placeholder="الاسم الكامل" required>
+
+      <label for="c-reply">كيف نرد عليك؟</label>
+      <input id="c-reply" name="reply" type="text" inputmode="email" placeholder="بريد إلكتروني أو رقم جوال" required>
+      <p class="hint">يُستخدم للرد عليك فقط، ولا يُنشر ولا يُشارك.</p>
+
+      <label for="c-topic">موضوع الرسالة</label>
+      <select id="c-topic" name="topic">
+        <option value="سؤال عن محتوى تعليمي في الموقع">سؤال عن محتوى تعليمي في الموقع</option>
+        <option value="استفسار عن دورة ORL101 أو FESS101">استفسار عن دورة ORL101 أو FESS101</option>
+        <option value="تعاون أكاديمي أو بحثي">تعاون أكاديمي أو بحثي</option>
+        <option value="التحقق من شهادة">التحقق من شهادة</option>
+        <option value="تواصل إعلامي أو محاضرة">تواصل إعلامي أو محاضرة</option>
+        <option value="موضوع آخر">موضوع آخر</option>
+      </select>
+
+      <label for="c-msg">الرسالة</label>
+      <textarea id="c-msg" name="message" placeholder="اكتب رسالتك بوضوح واختصار…" required></textarea>
+
+      <label style="display:flex;gap:10px;align-items:flex-start;font-weight:500;margin-bottom:18px">
+        <input type="checkbox" name="ack" style="width:auto;margin:4px 0 0" required>
+        <span>أُقرّ بأن رسالتي ليست طلب موعد ولا استشارة طبية، وأنها لا تحتوي بيانات صحية شخصية.</span>
+      </label>
+
+      <!-- spam trap: kept off-screen, real people never fill it -->
+      <input type="text" name="website" tabindex="-1" autocomplete="off"
+             style="position:absolute;inset-inline-start:-9999px;width:1px;height:1px;opacity:0" aria-hidden="true">
+
+      <button class="btn" type="submit">أرسل الرسالة</button>
+      <p class="form-msg" role="status" aria-live="polite"></p>
+    </form>
+
+    <h2>أسئلة متكرّرة عن هذا النموذج</h2>
+    <ul>
+      <li><strong>هل أستطيع حجز موعد من هنا؟</strong> لا. الموقع تعليمي ولا يستقبل المواعيد إطلاقاً.</li>
+      <li><strong>هل تظهر رسالتي لأحد غير الدكتور؟</strong> لا، تُسلَّم إليه وحده.</li>
+      <li><strong>كم يستغرق الرد؟</strong> لا يوجد وقت مضمون — المتابعة التعليمية تطوعية.</li>
+      <li><strong>سؤال طبي عن حالتي؟</strong> لن يُجاب عنه. الرجاء مراجعة طبيبك المعالج.</li>
+    </ul>
+
+  </div>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <a class="brand" href="/">
+          <span class="mark" aria-hidden="true"></span>
+          <span>د. محمد <b>البار</b></span>
+        </a>
+        <p class="about">استشاري الأنف والأذن والحنجرة — جراحة الأنف والجيوب وقاعدة الجمجمة بالمنظار. تعليم المرضى وتدريب الأطباء.</p>
+      </div>
+      <div>
+        <h4>الموقع</h4>
+        <ul>
+          <li><a href="/patients/">للمرضى</a></li>
+          <li><a href="/orl-daily/">ملخص الأبحاث اليومي</a></li>
+          <li><a href="/about/">نبذة</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>التعليم</h4>
+        <ul>
+          <li><a href="/orl101/">ORL101</a></li>
+          <li><a href="/fess101/">FESS101</a></li>
+          <li><a href="/verify/">التحقق من شهادة</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>تواصل</h4>
+        <ul>
+          <li><a href="/contact/">نموذج التواصل</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="disclaimer">
+      المحتوى في هذا الموقع تعليمي عام، وليس استشارة طبية ولا بديلاً عن زيارة الطبيب، ولا تنشأ به علاقة طبيب‑مريض. لا تُرسل أي بيانات صحية شخصية عبر هذا الموقع.<br>
+      © <span id="yr">2026</span> د. محمد البار. جميع الحقوق محفوظة.
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=202610081400" defer></script>
+<script src="/assets/contact.js?v=202610081400" defer></script>
+</body>
+</html>

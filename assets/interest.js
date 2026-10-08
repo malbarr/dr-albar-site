@@ -39,27 +39,9 @@
       }
       throw new Error('http ' + r.status);
     }).catch(function () {
-      // the server endpoint is not live yet — fall back to WhatsApp
       btn.disabled = false;
       btn.textContent = 'سجّل اهتمامي';
-
-      var lines = [
-        'السلام عليكم، أرغب بتسجيل اهتمامي بدورة ' + data.course + '.',
-        'الاسم: ' + data.name,
-        'البريد: ' + data.email,
-        'الصفة: ' + data.role
-      ];
-      var url = 'https://wa.me/966582701349?text=' + encodeURIComponent(lines.join('\n'));
-
-      var a = document.createElement('a');
-      a.href = url;
-      a.target = '_blank';
-      a.rel = 'noopener';
-      a.innerHTML = '<b>سجّل اهتمامك عبر واتساب</b>';
-
-      msg.textContent = 'التسجيل الإلكتروني لم يُفعَّل بعد — ';
-      msg.appendChild(a);
-      msg.appendChild(document.createTextNode(' وسيصلك إشعار عند فتح التسجيل.'));
+      msg.textContent = 'تعذّر الإرسال الآن. أعد المحاولة بعد قليل، أو استخدم نموذج التواصل في الموقع.';
       msg.style.color = ERR;
     });
   });
