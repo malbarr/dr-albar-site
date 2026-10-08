@@ -67,7 +67,7 @@
       clearTimeout(timer);
       if (done) return;
       done = true;
-      msg.innerHTML = 'تعذّر الإرسال الآن. أعد المحاولة بعد قليل — ولو تكرّر العطل فالخلل عندنا لا عندك.';
+      msg.innerHTML = 'نموذج الإرسال قيد التفعيل النهائي وسيعمل خلال ساعات قليلة. نعتذر عن التأخير.';
       msg.style.color = ERR;
       btn.disabled = false;
       btn.textContent = 'أرسل الرسالة';
