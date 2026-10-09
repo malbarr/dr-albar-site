@@ -94,8 +94,9 @@
     var card = el('article', 'card daily-paper');
     card.id = paperID(article, index);
     var meta = el('div', 'daily-meta');
-    meta.append(el('span', 'tag', text(article.journal) || 'بحث علمي'));
-    if (text(article.pub_date)) meta.append(el('span', '', 'تاريخ نشر البحث: ' + article.pub_date));
+    meta.append(el('span', 'tag', text(article.journal) || 'مادة من المصدر'));
+    if (article.subspecialty === 'business') meta.append(el('span', 'tag daily-business-label', 'خبر قطاعي · ليس دراسة سريرية'));
+    if (text(article.pub_date)) meta.append(el('span', '', 'تاريخ النشر: ' + article.pub_date));
     card.append(meta);
     var heading = el('h3', '', field(article, 'title') || 'عنوان غير متاح في المصدر');
     heading.dir = 'auto'; card.append(heading);
@@ -133,7 +134,7 @@
     if (pubmed) links.append(articleLink(pubmed, 'PubMed · البحث الأصلي'));
     var doi = text(article.doi).replace(/^https?:\/\/(dx\.)?doi\.org\//i, '');
     if (/^10\.\d{4,9}\/\S+$/.test(doi)) links.append(articleLink('https://doi.org/' + encodeURIComponent(doi), 'DOI · الناشر'));
-    if (!links.childElementCount) links.append(el('span', 'muted', 'لا يتوفر رابط بحث موثوق في هذا الإصدار.'));
+    if (!links.childElementCount) links.append(el('span', 'muted', 'لا يتوفر رابط مرجعي صالح في بيانات هذه المادة.'));
     card.append(links);
     return card;
   }
@@ -149,8 +150,8 @@
     });
     $('daily-articles').replaceChildren(fragment);
     $('daily-no-results').hidden = count > 0;
-    $('daily-no-results').textContent = issue.articles.length ? 'لا توجد نتائج مطابقة داخل هذا الإصدار.' : 'هذا الإصدار موجود في الأرشيف، لكنه لا يتضمن دراسات.';
-    $('daily-count').textContent = count + ' / ' + issue.articles.length + ' دراسة';
+    $('daily-no-results').textContent = issue.articles.length ? 'لا توجد نتائج مطابقة داخل هذا الإصدار.' : 'هذا الإصدار موجود في الأرشيف، لكنه لا يتضمن مواد.';
+    $('daily-count').textContent = count + ' / ' + issue.articles.length + ' مادة';
     app.querySelectorAll('[data-daily-lang]').forEach(function (button) {
       button.setAttribute('aria-pressed', String(button.dataset.dailyLang === language));
     });
@@ -251,7 +252,7 @@
           item.append(el('p', '', summary.length > 210 ? summary.slice(0, 210) + '…' : summary));
           item.dir = 'auto'; fragment.append(item);
         });
-        if (!data.articles.length) fragment.append(el('p', 'muted', 'لا يتضمن هذا الإصدار دراسات. الأرشيف الكامل متاح في صفحة القسم.'));
+        if (!data.articles.length) fragment.append(el('p', 'muted', 'لا يتضمن هذا الإصدار مواد. الأرشيف الكامل متاح في صفحة القسم.'));
         preview.replaceChildren(fragment);
         $('daily-preview-date').replaceChildren(el('span', '', 'أحدث إصدار · '), dateNode(data.date));
         $('daily-preview-note').textContent = 'محتوى فعلي من ORL Daily · اقرأ الملخصات الكاملة والأرشيف داخل الموقع.';

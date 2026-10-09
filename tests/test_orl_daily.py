@@ -52,6 +52,9 @@ try:
         assert page.locator('#daily-date option').count() == len(dates)
         assert page.locator('.daily-paper').count() == len(data[dates[0]]['articles'])
         record('real-network-initial-load', status=r.status, url=page.url, dates=len(dates), cards=page.locator('.daily-paper').count(), status_text=page.locator('#daily-status').inner_text())
+        business = sum(x.get('subspecialty') == 'business' for x in data[dates[0]]['articles'])
+        assert page.locator('.daily-business-label').count() == business
+        record('source-content-types-labeled', total=len(data[dates[0]]['articles']), industry_news=business)
         page.screenshot(path=str(a.artifacts/'desktop.png'))
         entries = 0
         for date in dates:
