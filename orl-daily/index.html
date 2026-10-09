@@ -14,6 +14,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/style.css?v=202610081845">
 <script>document.documentElement.className+=" js";setTimeout(function(){document.querySelectorAll("[data-reveal]:not(.in)").forEach(function(e){e.classList.add("in")})},2500);</script>
+<link rel="stylesheet" href="/assets/orl-daily.css?v=20261009-live1">
 </head>
 <body>
 
@@ -49,11 +50,40 @@
 
   <div class="wrap">
 
-    <div id="list" class="grid"></div>
-
-    <p id="empty" class="note" hidden>
-      <strong>أول عدد لم يُنشر بعد.</strong> يُحدَّث هذا القسم آلياً كل صباح بتوقيت الرياض بمجرد تشغيل النشر التلقائي.
-    </p>
+    <section id="daily-app" class="daily-app" aria-label="إصدارات ORL Daily">
+      <div class="daily-toolbar">
+        <div class="daily-picker">
+          <label for="daily-date">اختر تاريخ الإصدار</label>
+          <select id="daily-date" aria-label="تاريخ الإصدار"><option>جارٍ تحميل الأرشيف…</option></select>
+        </div>
+        <button id="daily-latest" class="btn ghost sm" type="button">أحدث إصدار</button>
+        <div class="daily-language" role="group" aria-label="لغة المحتوى العلمي">
+          <button class="btn ghost sm" type="button" data-daily-lang="ar" aria-pressed="true">العربية</button>
+          <button class="btn ghost sm" type="button" data-daily-lang="en" aria-pressed="false" lang="en">English</button>
+        </div>
+      </div>
+      <p id="daily-status" class="daily-status" role="status" aria-live="polite">جارٍ الاتصال بفهرس الأبحاث…</p>
+      <button id="daily-retry" class="btn ghost sm" type="button" hidden>إعادة المحاولة</button>
+      <details class="daily-archive-box">
+        <summary id="daily-archive-count">الأرشيف الكامل</summary>
+        <div id="daily-archive"></div>
+      </details>
+      <section id="daily-reader" aria-labelledby="daily-issue-heading" aria-busy="false" hidden>
+        <header class="daily-reader-head">
+          <h2 id="daily-issue-heading"></h2>
+          <p id="daily-generated" class="daily-generated"></p>
+        </header>
+        <div class="daily-search">
+          <label for="daily-search" class="daily-search-label">ابحث داخل هذا الإصدار</label>
+          <input id="daily-search" type="search" placeholder="عنوان البحث، الملخص، المجلة أو PMID" autocomplete="off">
+          <span id="daily-count" class="daily-count" role="status"></span>
+        </div>
+        <div id="daily-articles" class="daily-articles"></div>
+        <p id="daily-no-results" class="note" hidden></p>
+      </section>
+      <noscript><p class="note">فعّل JavaScript لقراءة الإصدارات مباشرة من المصدر وعرض الأرشيف الكامل.</p></noscript>
+      <p class="muted daily-source-note">تُعرض النصوص العلمية كما وردت في ORL Daily. يحتفظ GitHub بالمصدر والأرشيف، ويقرأ الموقع الإصدارات تلقائيًا دون نقل يدوي. تاريخ الإصدار يختلف عن تاريخ نشر البحث.</p>
+    </section>
 
     <h2>عن هذا القسم</h2>
     <p class="muted">الملخصات اجتهاد تحريري موجز لتسهيل المتابعة، وليست بديلاً عن قراءة البحث الأصلي. المرجع دائماً هو النص المنشور في مجلته.</p>
@@ -101,28 +131,12 @@
   </div>
 </footer>
 
-<script>
-fetch('/orl-daily/issues.json', { cache: 'no-cache' })
-  .then(function (r) { return r.ok ? r.json() : []; })
-  .then(function (items) {
-    if (!Array.isArray(items) || !items.length) { document.getElementById('empty').hidden = false; return; }
-    var box = document.getElementById('list');
-    items.slice(0, 60).forEach(function (it) {
-      var a = document.createElement('a');
-      a.className = 'card';
-      a.href = it.url;
-      a.innerHTML = '<span class="tag">' + it.date + '</span><h3>' + it.title + '</h3>' +
-                    '<p>' + (it.summary || '') + '</p>';
-      box.appendChild(a);
-    });
-  })
-  .catch(function () { document.getElementById('empty').hidden = false; });
-</script>
 <a class="fab" href="/contact/" aria-label="نموذج التواصل">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="m3.5 7 8.5 6 8.5-6"/></svg>
   <span class="t">تواصل</span>
 </a>
 
 <script src="/assets/site.js?v=202610081845" defer></script>
+<script src="/assets/orl-daily.js?v=20261009-live1" defer></script>
 </body>
 </html>

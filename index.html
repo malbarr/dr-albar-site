@@ -19,6 +19,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@400;500;600;700;800&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/style.css?v=202610081845">
 <script>document.documentElement.className+=" js";setTimeout(function(){document.querySelectorAll("[data-reveal]:not(.in)").forEach(function(e){e.classList.add("in")})},2500);</script>
+<link rel="stylesheet" href="/assets/orl-daily.css?v=20261009-live1">
 </head>
 <body>
 
@@ -201,24 +202,11 @@
       <div class="panel" data-reveal="140">
         <div class="panel-head">
           <span class="d g"></span><span class="d"></span><span class="d"></span>
-          <span style="margin-inline-start:auto">يُحدَّث ٧:٠٠ صباحاً · الرياض</span>
+          <span id="daily-preview-date" style="margin-inline-start:auto">جارٍ تحميل أحدث إصدار…</span>
         </div>
-        <div class="feed-item">
-          <span class="meta">التهاب الجيوب المزمن</span>
-          <h4>العلاج الحيوي في اللحميات الأنفية: مَن يستفيد فعلاً؟</h4>
-          <p>مراجعة منهجية تقارن الاستجابة بحسب نمط الالتهاب ودرجة فقدان الشم قبل العلاج.</p>
-        </div>
-        <div class="feed-item">
-          <span class="meta">جراحة قاعدة الجمجمة</span>
-          <h4>تسرّب السائل الدماغي الأنفي: معدلات النجاح بعد الترقيع بالمنظار</h4>
-          <p>سلسلة متعددة المراكز تُراجع عوامل الفشل في العمليات الثانوية.</p>
-        </div>
-        <div class="feed-item">
-          <span class="meta">حاسة الشم</span>
-          <h4>التدريب الشمّي: ما الذي يثبت فعلاً بعد سنة؟</h4>
-          <p>تحليل تجميعي يفرّق بين التحسّن المُقاس والتحسّن الذي يشعر به المريض.</p>
-        </div>
-        <p class="muted" style="font-size:.78rem;margin:14px 0 0;line-height:1.6">نماذج توضيحية للشكل — المحتوى الحقيقي في صفحة القسم.</p>
+        <div id="daily-preview" aria-live="polite"><p class="muted">جارٍ تحميل الأبحاث من المصدر…</p></div>
+        <p id="daily-preview-note" class="muted" style="font-size:.78rem;margin:14px 0 0;line-height:1.6">الإصدارات الجديدة والأرشيف تُقرأ تلقائيًا من ORL Daily.</p>
+        <noscript><p><a href="/orl-daily/">افتح أرشيف الأبحاث وفعّل JavaScript لعرض المحتوى.</a></p></noscript>
       </div>
     </div>
   </div>
@@ -250,11 +238,11 @@
         <p>مرجع العيادة لطبيب الرعاية الأولية — الحالات الشائعة ومتى تُحوَّل إلى الأخصائي.</p>
       </a>
 
-      <a class="card feat c-slate" href="https://malbarr.github.io/orl-daily" target="_blank" rel="noopener" data-reveal="160">
+      <a class="card feat c-slate" href="/orl-daily/" data-reveal="160">
         <span class="ico slate" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11a9 9 0 0 1 9 9"/><path d="M4 4a16 16 0 0 1 16 16"/><circle cx="5" cy="19" r="1.4" fill="currentColor"/></svg></span>
         <span class="tag daily">يومي</span>
         <h3>ORL‑Bar Daily</h3>
-        <p>أرشيف ملخّص الأبحاث اليومي كتطبيق مستقل — يُقرأ بسرعة على الجوال.</p>
+        <p>الإصدارات الجديدة والأرشيف الكامل داخل الموقع — يُقرأ بسرعة على الجوال.</p>
       </a>
 
       <a class="card feat c-amber" href="https://malbarr.github.io/sv-update" target="_blank" rel="noopener" data-reveal="240">
@@ -371,5 +359,6 @@
 </a>
 
 <script src="/assets/site.js?v=202610081845" defer></script>
+<script src="/assets/orl-daily.js?v=20261009-live1" defer></script>
 </body>
 </html>

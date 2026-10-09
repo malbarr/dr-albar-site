@@ -1,0 +1,55 @@
+/* Scoped additions: keep the site's existing design system and navigation. */
+.daily-app { max-width: 960px; margin-inline: auto; min-width: 0; }
+.daily-app [hidden] { display: none !important; }
+.daily-toolbar { display: flex; gap: 16px; flex-wrap: wrap; align-items: end; padding: 22px; border: 1px solid var(--line); border-radius: var(--r); background: var(--bg-2); }
+.daily-picker { flex: 1 1 220px; min-width: 0; }
+.daily-picker label, .daily-search-label { display: block; margin-bottom: 6px; font-weight: 600; }
+.daily-app select, .daily-app input { width: 100%; min-height: 48px; min-width: 0; max-width: 100%; padding: 10px 12px; border: 1px solid var(--line); border-radius: var(--r-sm); background: var(--bg); color: var(--ink); font: inherit; font-size: 16px; }
+.daily-app button { cursor: pointer; }
+.daily-app .btn { min-height: 44px; white-space: normal; text-align: center; }
+.daily-language { display: flex; gap: 8px; flex-wrap: wrap; }
+.daily-language [aria-pressed="true"] { background: var(--brand-3); border-color: var(--brand-3); color: white; }
+.daily-status { margin-block: 14px; color: var(--ink-3); font-size: .88rem; min-height: 1.8em; }
+.daily-error { color: var(--ink); border-inline-start: 4px solid var(--amber); padding-inline-start: 12px; }
+.daily-archive-box { margin-block: 20px 30px; border: 1px solid var(--line); border-radius: var(--r); background: var(--bg); }
+.daily-archive-box > summary { padding: 15px 20px; cursor: pointer; font-weight: 700; color: var(--ink); min-height: 48px; }
+.daily-archive-box > div { padding: 0 20px 20px; }
+.daily-month h3 { font-size: 1rem; margin: 18px 0 12px; }
+.daily-dates { display: flex; flex-wrap: wrap; gap: 9px; }
+.daily-date-link { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 6px 12px; border: 1px solid var(--line); border-radius: var(--r-sm); color: var(--ink-2); background: var(--bg-2); }
+.daily-date-link[aria-current="date"] { background: var(--brand-3); border-color: var(--brand-3); color: white; }
+.daily-reader-head { margin-bottom: 20px; }
+.daily-reader-head h2 { margin: 0 0 12px; font-size: clamp(1.25rem, 4vw, 1.8rem); }
+.daily-generated { margin: 0; color: var(--ink-3); font-size: .83rem; overflow-wrap: anywhere; }
+.daily-search { margin-block: 18px; }
+.daily-count { display: block; color: var(--ink-3); font-size: .88rem; margin-top: 8px; }
+.daily-articles { display: grid; grid-template-columns: minmax(0, 1fr); gap: 22px; }
+.daily-paper { padding: 28px; min-width: 0; overflow-wrap: anywhere; scroll-margin-top: 100px; }
+.daily-paper:hover { transform: none; }
+.daily-paper h3 { font-size: clamp(1.05rem, 3.6vw, 1.35rem); line-height: 1.55; margin: 16px 0; }
+.daily-meta { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; font-size: .8rem; color: var(--ink-3); }
+.daily-meta .tag { white-space: normal; }
+.daily-paper .daily-design { font-size: .88rem; color: var(--ink-3); margin: 0 0 16px; }
+.daily-paper .daily-summary { font-size: 1rem; color: var(--ink-2); line-height: 1.95; margin: 0 0 18px; white-space: pre-line; }
+.daily-analysis { border-top: 1px solid var(--line); padding-top: 8px; }
+.daily-analysis > summary { cursor: pointer; color: var(--brand-3); font-weight: 600; padding: 10px 0; min-height: 44px; }
+.daily-detail { padding: 10px 0; }
+.daily-detail h4 { margin: 0 0 8px; font-size: .98rem; }
+.daily-detail p { margin: 0; line-height: 1.9; white-space: pre-line; }
+.daily-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+.daily-source-note { margin-top: 32px; }
+.daily-preview-item { display: block; color: var(--ink-2); overflow-wrap: anywhere; }
+.daily-preview-item:hover h4 { color: var(--brand-2); }
+.daily-preview-item h4 { line-height: 1.6; }
+.daily-preview-item p { line-height: 1.85; }
+@media (max-width: 540px) {
+  .daily-toolbar { padding: 16px; gap: 12px; }
+  .daily-picker { flex-basis: 100%; }
+  .daily-language { width: 100%; }
+  .daily-language button { flex: 1; }
+  .daily-paper { padding: 20px 16px; }
+  .daily-links .btn { flex: 1 1 130px; }
+  .daily-archive-box > div { padding-inline: 14px; }
+  .daily-dates { gap: 7px; }
+  .daily-date-link { font-size: .86rem; padding-inline: 9px; }
+}
