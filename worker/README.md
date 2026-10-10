@@ -27,7 +27,7 @@ wrangler kv namespace create CONTACT
 ```bash
 wrangler secret put PULL_KEY        # أي نص عشوائي طويل — يحمي نقطة السحب
 wrangler secret put TG_TOKEN        # اختياري: توكن بوت تيليجرام للإشعار الفوري
-wrangler secret put TG_CHAT         # اختياري: 1276595563  (أو chat:thread)
+wrangler secret put TG_CHAT         # اختياري: <PRIVATE_CHAT_ID>  (أو chat:thread)
 ```
 
 ## 3. النشر
@@ -78,7 +78,7 @@ CONTACT_PULL_KEY=<نفس PULL_KEY>
 | المسار | `dr-albar.com/api/contact*` |
 | KV namespace | `CONTACT` → `5aee80d5269745de83a56acc650913fe` |
 | النطاق (zone) | `dr-albar.com` → `8b2d583fd3ca993640729ee21f1c1aba` |
-| التسليم الحالي | إشعار تيليجرام فوري إلى خاص د. محمد (`1276595563`) |
+| التسليم الحالي | إشعار تيليجرام فوري إلى خاص د. محمد (`<PRIVATE_CHAT_ID>`) |
 | مفتاح السحب | محفوظ خارج المستودع: `state/contact_pull_key.txt` |
 
 نُشر عبر Cloudflare API من جلسة المتصفح المسجّلة (لا توكن جديد أُنشئ).

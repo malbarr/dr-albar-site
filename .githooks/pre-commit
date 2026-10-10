@@ -1,0 +1,4 @@
+#!/bin/sh
+PY=python
+command -v "$PY" >/dev/null 2>&1 || PY=python3
+exec "$PY" scripts/check_privacy.py --staged
