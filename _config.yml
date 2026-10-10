@@ -1,0 +1,8 @@
+# Keep operational material in Git, but out of the public Pages build.
+exclude:
+  - worker
+  - scripts
+  - tests
+  - .githooks
+  - AGENTS.md
+  - PRIVACY.md
