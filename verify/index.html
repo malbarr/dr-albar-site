@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>التحقق من شهادة — د. محمد البار</title>
-<meta name="description" content="تحقّق من صحة شهادة صادرة من دورات ORL101 أو FESS101 برقم الشهادة.">
+<title>التحقق من شهادة إتمام — د. محمد البار</title>
+<meta name="description" content="تحقّق من صحة شهادة إتمام صادرة من دورات ORL101 أو FESS101 برقم الشهادة. التحقق لا يثبت اعتمادًا تنظيميًا للدورة.">
 <meta name="robots" content="noindex">
 <meta name="theme-color" content="#04262b">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
@@ -42,8 +42,9 @@
 
   <div class="page-head">
     <div class="wrap">
-      <h1>التحقق من شهادة</h1>
-      <p class="lede">أدخل رقم الشهادة الظاهر عليها للتأكد من صحتها وسريانها. التحقق متاح لأي جهة بلا تسجيل دخول.</p>
+      <h1>التحقق من شهادة إتمام</h1>
+      <p class="lede">أدخل رقم شهادة الإتمام الظاهر عليها للتأكد من صحتها وسريانها. التحقق متاح لأي جهة بلا تسجيل دخول، ولا يثبت اعتمادًا تنظيميًا للدورة.</p>
+      <p class="muted" lang="en" dir="ltr">Verification confirms the authenticity and validity of a Certificate of Completion, not regulatory accreditation of the course.</p>
     </div>
   </div>
 
@@ -113,7 +114,7 @@ document.getElementById('go').addEventListener('click', function () {
     .then(function (d) {
       if (!d.found) { out.textContent = 'لا توجد شهادة بهذا الرقم.'; out.style.color = '#b3261e'; return; }
       out.style.color = '#0a5f54';
-      out.textContent = 'شهادة صحيحة — ' + d.course + ' · ' + d.name +
+      out.textContent = 'شهادة إتمام صحيحة — ' + d.course + ' · ' + d.name +
         ' · صدرت ' + d.issued + ' · تنتهي ' + d.expires + (d.valid ? '' : ' (منتهية)');
     })
     .catch(function () { out.textContent = 'نظام التحقق غير مفعّل بعد.'; out.style.color = '#b3261e'; });
