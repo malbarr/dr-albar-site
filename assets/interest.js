@@ -27,10 +27,20 @@
     btn.disabled = true;
     btn.textContent = 'جارٍ الإرسال…';
 
-    fetch('/api/interest', {
+    /* /api/interest was never deployed; the contact relay is live, so the
+       registration rides on it as a normal, clearly-labelled message. */
+    fetch('/api/contact', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data)
+      body: JSON.stringify({
+        name: data.name,
+        reply: data.email,
+        topic: 'تسجيل اهتمام — ' + data.course,
+        message: 'تسجيل اهتمام بدورة ' + data.course + '. الصفة: ' + data.role +
+                 '. يرغب بإشعار عند فتح التسجيل في الدورة.',
+        page: location.pathname,
+        ack: true
+      })
     }).then(function (r) {
       if (r.ok) {
         form.innerHTML = '<p style="margin:0"><strong>تم التسجيل.</strong> سنراسلك على ' +
